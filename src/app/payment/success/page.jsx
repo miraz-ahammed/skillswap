@@ -1,10 +1,10 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 
-export default function PaymentSuccessPage() {
+function PaymentSuccessContent() {
   const searchParams = useSearchParams();
   const sessionId = searchParams.get("session_id");
 
@@ -85,6 +85,7 @@ export default function PaymentSuccessPage() {
       </div>
     );
   }
+
   return (
     <div className="flex flex-col items-center justify-center min-h-[70vh] text-center px-4">
       <div className="size-14 rounded-full bg-green-500/10 flex items-center justify-center mb-4">
@@ -118,5 +119,19 @@ export default function PaymentSuccessPage() {
         Go to Dashboard
       </Link>
     </div>
+  );
+}
+
+export default function PaymentSuccessPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="flex flex-col items-center justify-center min-h-[70vh] text-center px-4">
+          <div className="size-10 border-2 border-default border-t-foreground rounded-full animate-spin mb-4" />
+        </div>
+      }
+    >
+      <PaymentSuccessContent />
+    </Suspense>
   );
 }
