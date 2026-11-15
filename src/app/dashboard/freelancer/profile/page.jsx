@@ -19,7 +19,7 @@ export default function FreelancerProfilePage() {
   useEffect(() => {
     if (!session?.user?.email) return;
 
-    fetch(`http://localhost:5000/user-profile/${session.user.email}`)
+    fetch(`https://skillswap-server-eta.vercel.app/user-profile/${session.user.email}`)
       .then((res) => res.json())
       .then((data) => {
         setName(data.name || session.user.name || "");
@@ -64,7 +64,7 @@ export default function FreelancerProfilePage() {
 
     try {
       const res = await fetch(
-        `http://localhost:5000/user-profile/${session.user.email}`,
+        `https://skillswap-server-eta.vercel.app/user-profile/${session.user.email}`,
         {
           method: "PATCH",
           headers: { "Content-Type": "application/json" },

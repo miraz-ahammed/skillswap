@@ -17,7 +17,7 @@ export default function MyTasksPage() {
   }, [session, search, category]);
 
   const fetchTasks = () => {
-    fetch(`http://localhost:5000/tasks?email=${session.user.email}&search=${search}&category=${category}`)
+    fetch(`https://skillswap-server-eta.vercel.app/tasks?email=${session.user.email}&search=${search}&category=${category}`)
       .then(res => res.json())
       .then(data => {
         setTasks(Array.isArray(data) ? data : data.tasks || []);
@@ -36,7 +36,7 @@ export default function MyTasksPage() {
     }
     if (!confirm("Are you sure you want to delete this task?")) return;
 
-    const res = await fetch(`http://localhost:5000/tasks/${task._id}`, { method: 'DELETE' });
+    const res = await fetch(`https://skillswap-server-eta.vercel.app/tasks/${task._id}`, { method: 'DELETE' });
     const data = await res.json();
     if (data.deletedCount > 0) {
       fetchTasks();

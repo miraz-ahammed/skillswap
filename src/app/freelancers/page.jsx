@@ -7,7 +7,7 @@ const BrowseFreelancers = () => {
   const [freelancers, setFreelancers] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:5000/all-freelancers')
+    fetch('https://skillswap-server-eta.vercel.app/all-freelancers')
       .then(res => res.json())
       .then(data => setFreelancers(data))
       .catch(err => console.error("Error fetching:", err));

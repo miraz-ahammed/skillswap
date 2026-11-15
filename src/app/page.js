@@ -7,8 +7,8 @@ const Home = () => {
   const [freelancers, setFreelancers] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:5000/latest-tasks').then(res => res.json()).then(setTasks);
-    fetch('http://localhost:5000/top-freelancers').then(res => res.json()).then(setFreelancers);
+    fetch('https://skillswap-server-eta.vercel.app/latest-tasks').then(res => res.json()).then(setTasks);
+    fetch('https://skillswap-server-eta.vercel.app/top-freelancers').then(res => res.json()).then(setFreelancers);
   }, []);
 
   return (

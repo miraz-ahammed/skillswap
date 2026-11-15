@@ -5,7 +5,7 @@ export default function AdminStatsPage() {
   const [stats, setStats] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:5000/admin-stats")
+    fetch("https://skillswap-server-eta.vercel.app/admin-stats")
       .then(res => res.json())
       .then(data => setStats(data));
   }, []);

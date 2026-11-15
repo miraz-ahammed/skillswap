@@ -19,7 +19,7 @@ export default function MyProposalsPage() {
     if (!session?.user?.email) return;
 
     fetch(
-      `http://localhost:5000/proposals?email=${session.user.email}&role=freelancer`
+      `https://skillswap-server-eta.vercel.app/proposals?email=${session.user.email}&role=freelancer`
     )
       .then((res) => res.json())
       .then(async (data) => {
@@ -28,7 +28,7 @@ export default function MyProposalsPage() {
         await Promise.all(
           data.map(async (p) => {
             try {
-              const res = await fetch(`http://localhost:5000/tasks/${p.task_id}`);
+              const res = await fetch(`https://skillswap-server-eta.vercel.app/tasks/${p.task_id}`);
               const task = await res.json();
               titles[p.task_id] = task.title || "Untitled Task";
             } catch {

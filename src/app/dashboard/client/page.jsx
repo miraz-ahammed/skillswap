@@ -13,7 +13,7 @@ export default function ClientDashboardOverview() {
   useEffect(() => {
     if (!session?.user?.email) return;
 
-    fetch(`http://localhost:5000/tasks?email=${session.user.email}`)
+    fetch(`https://skillswap-server-eta.vercel.app/tasks?email=${session.user.email}`)
       .then(res => res.json())
       .then(data => {
         setTasks(Array.isArray(data) ? data : data.tasks || []);

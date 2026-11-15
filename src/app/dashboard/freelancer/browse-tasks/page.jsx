@@ -15,7 +15,7 @@ export default function BrowseTasksPage() {
     if (search) params.append("search", search);
     if (category !== "all") params.append("category", category);
 
-    fetch(`http://localhost:5000/tasks?${params.toString()}`)
+    fetch(`https://skillswap-server-eta.vercel.app/tasks?${params.toString()}`)
       .then((res) => res.json())
       .then((data) => {
         setTasks(Array.isArray(data) ? data : data.tasks || []);

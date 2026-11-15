@@ -1,7 +1,7 @@
 export default async function FreelancerProfile({ params }) {
   const { id } = await params;
 
-  const res = await fetch(`http://localhost:5000/freelancer/${id}`, { cache: 'no-store' });
+  const res = await fetch(`https://skillswap-server-eta.vercel.app/freelancer/${id}`, { cache: 'no-store' });
   const freelancer = await res.json();
 
   if (!freelancer) {

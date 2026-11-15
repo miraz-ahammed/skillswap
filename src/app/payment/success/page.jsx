@@ -22,7 +22,7 @@ function PaymentSuccessContent() {
 
     const confirmPayment = async () => {
       try {
-        const res = await fetch("http://localhost:5000/confirm-session", {
+        const res = await fetch("https://skillswap-server-eta.vercel.app/confirm-session", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ session_id: sessionId }),
@@ -41,7 +41,7 @@ function PaymentSuccessContent() {
         if (data.payment?.task_id) {
           try {
             const taskRes = await fetch(
-              `http://localhost:5000/tasks/${data.payment.task_id}`
+              `https://skillswap-server-eta.vercel.app/tasks/${data.payment.task_id}`
             );
             const task = await taskRes.json();
             setTaskTitle(task?.title || "");

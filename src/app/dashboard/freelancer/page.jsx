@@ -17,7 +17,7 @@ export default function FreelancerDashboardPage() {
   useEffect(() => {
     if (!session?.user?.email) return;
 
-    fetch(`http://localhost:5000/freelancer-stats/${session.user.email}`)
+    fetch(`https://skillswap-server-eta.vercel.app/freelancer-stats/${session.user.email}`)
       .then((res) => res.json())
       .then((data) => {
         setStats(data);

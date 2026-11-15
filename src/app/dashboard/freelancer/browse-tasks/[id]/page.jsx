@@ -21,7 +21,7 @@ export default function TaskDetailsPage() {
   const [coverNote, setCoverNote] = useState("");
 
   useEffect(() => {
-    fetch(`http://localhost:5000/tasks/${id}`)
+    fetch(`https://skillswap-server-eta.vercel.app/tasks/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setTask(data);
@@ -37,7 +37,7 @@ export default function TaskDetailsPage() {
     if (!session?.user?.email || !id) return;
 
     fetch(
-      `http://localhost:5000/proposals/check?task_id=${id}&freelancer_email=${session.user.email}`
+      `https://skillswap-server-eta.vercel.app/proposals/check?task_id=${id}&freelancer_email=${session.user.email}`
     )
       .then((res) => res.json())
       .then((data) => setAlreadyApplied(data.exists))
@@ -71,7 +71,7 @@ export default function TaskDetailsPage() {
     };
 
     try {
-      const res = await fetch("http://localhost:5000/proposals", {
+      const res = await fetch("https://skillswap-server-eta.vercel.app/proposals", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(newProposal),

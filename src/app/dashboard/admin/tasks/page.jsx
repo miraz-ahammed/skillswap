@@ -5,7 +5,7 @@ export default function ManageTasksPage() {
   const [tasks, setTasks] = useState([]);
 
   const loadTasks = () => {
-    fetch("http://localhost:5000/tasks")
+    fetch("https://skillswap-server-eta.vercel.app/tasks")
       .then(res => res.json())
       .then(data => setTasks(Array.isArray(data) ? data : data.tasks));
   };
@@ -14,7 +14,7 @@ export default function ManageTasksPage() {
 
   const handleDelete = async (id) => {
     if (!confirm("Delete this task?")) return;
-    await fetch(`http://localhost:5000/tasks/${id}`, { method: "DELETE" });
+    await fetch(`https://skillswap-server-eta.vercel.app/tasks/${id}`, { method: "DELETE" });
     loadTasks();
   };
 

@@ -19,7 +19,7 @@ export default function EditTaskPage() {
   const [status, setStatus] = useState("");
 
   useEffect(() => {
-    fetch(`http://localhost:5000/tasks/${id}`)
+    fetch(`https://skillswap-server-eta.vercel.app/tasks/${id}`)
       .then((res) => res.json())
       .then((data) => {
         if (data.status !== "open") {
@@ -53,7 +53,7 @@ export default function EditTaskPage() {
     };
 
     try {
-      const res = await fetch(`http://localhost:5000/tasks/${id}`, {
+      const res = await fetch(`https://skillswap-server-eta.vercel.app/tasks/${id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(updatedTask),

@@ -5,7 +5,7 @@ export default function ManageUsersPage() {
   const [users, setUsers] = useState([]);
 
   const loadUsers = () => {
-    fetch("http://localhost:5000/users")
+    fetch("https://skillswap-server-eta.vercel.app/users")
       .then(res => res.json())
       .then(data => setUsers(data));
   };
@@ -14,7 +14,7 @@ export default function ManageUsersPage() {
 
   const toggleBlock = async (id, isBlocked) => {
     const action = isBlocked ? "unblock" : "block";
-    await fetch(`http://localhost:5000/users/${id}/${action}`, { method: "PATCH" });
+    await fetch(`https://skillswap-server-eta.vercel.app/users/${id}/${action}`, { method: "PATCH" });
     loadUsers();
   };
 

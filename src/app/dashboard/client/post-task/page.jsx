@@ -34,7 +34,7 @@ export default function PostTaskPage() {
     setSubmitting(true);
 
     try {
-      const res = await fetch('http://localhost:5000/tasks', {
+      const res = await fetch('https://skillswap-server-eta.vercel.app/tasks', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(taskData)

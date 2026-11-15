@@ -12,7 +12,7 @@ export default function BrowseTasks() {
   const totalPages = Math.ceil(totalCount / limit);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/tasks?page=${page}&limit=${limit}&search=${search}&category=${category}`, {
+    fetch(`https://skillswap-server-eta.vercel.app/tasks?page=${page}&limit=${limit}&search=${search}&category=${category}`, {
       method: "GET",
       headers: { "Cache-Control": "no-cache" }
     })

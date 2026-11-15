@@ -14,7 +14,7 @@ export default function ManageProposalsPage() {
     if (!session?.user?.email) return;
 
     fetch(
-      `http://localhost:5000/proposals?email=${session.user.email}&role=client`
+      `https://skillswap-server-eta.vercel.app/proposals?email=${session.user.email}&role=client`
     )
       .then((res) => res.json())
       .then(async (data) => {
@@ -24,7 +24,7 @@ export default function ManageProposalsPage() {
         await Promise.all(
           data.map(async (p) => {
             try {
-              const res = await fetch(`http://localhost:5000/tasks/${p.task_id}`);
+              const res = await fetch(`https://skillswap-server-eta.vercel.app/tasks/${p.task_id}`);
               const task = await res.json();
               titles[p.task_id] = task;
             } catch {
@@ -60,7 +60,7 @@ export default function ManageProposalsPage() {
     setProcessingId(proposal._id);
 
     try {
-      const res = await fetch("http://localhost:5000/create-checkout-session", {
+      const res = await fetch("https://skillswap-server-eta.vercel.app/create-checkout-session", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -94,7 +94,7 @@ export default function ManageProposalsPage() {
     setProcessingId(proposal._id);
 
     try {
-      await fetch(`http://localhost:5000/proposals/${proposal._id}`, {
+      await fetch(`https://skillswap-server-eta.vercel.app/proposals/${proposal._id}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ status: "rejected" }),
